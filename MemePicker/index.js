@@ -1,26 +1,42 @@
 import { catsData } from './data.js'
 
 const emotionRadios = document.getElementById('emotion-radios')
-
-/*
-Challenge:
-1. Set up an eventlistener which calls a new
-   function called "getMatchingCatsArray" when
-   the "Get Image" button is clicked.
-2. getMatchingCatsArray should save the value
-   of the checked radio input to a const and
-   log out that const.
-*/
+const getImageBtn = document.getElementById('get-image-btn')
+const gifsOnlyOption = document.getElementById('gifs-only-option')
 
 emotionRadios.addEventListener('change', highlightCheckedOption)
+
+getImageBtn.addEventListener('click', getMatchingCatsArray)
 
 function highlightCheckedOption(e){
     const radios = document.getElementsByClassName('radio')
     for (let radio of radios){
         radio.classList.remove('highlight')
     }
-    // remove all instances of the highlight class
     document.getElementById(e.target.id).parentElement.classList.add('highlight')
+}
+
+
+function getMatchingCatsArray(){
+    if(document.querySelector('input[type="radio"]:checked')){
+        const selectedEmotion = document.querySelector('input[type="radio"]:checked').value
+        const isGif = gifsOnlyOption.checked
+
+        const matchingCatsArray = catsData.filter(function(cat){
+            return cat.emotionTags.includes(selectedEmotion)
+        })
+
+        console.log(matchingCatsArray)
+        /*
+        Challenge:
+        1. Use the .filter() and .includes() methods to get
+           an array of cats which have the selected emotion
+           in their emotionTags array.
+        2. Store this array in a const and log it out to check
+           it's working. Think: what would be a good name for the
+           const?
+        */
+    }
 }
 
 function getEmotionsArray(cats){
