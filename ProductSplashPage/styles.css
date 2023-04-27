@@ -24,11 +24,6 @@ p {
     line-height: 1.35;
 }
 
-/*
-  Challenge:
-    - Set .beta-text and .subheading to appear in all-uppercase
-*/
-
 .beta-text {
     font-weight: 900;
 }
@@ -52,11 +47,20 @@ p {
 .main-content {
     display: flex;
     flex-direction: column;
+    padding-left: 2em;
+    padding-right: 2em;
 }
 
 /* =================
     Intro
    ================= */
+
+/*
+  Challenge: Apply a full background image
+    - Set the background of .intro to the image `intro-bg.png`
+    - The background image should scale to fill the entire
+      width and height of .intro while preserving its ratio
+*/
 
 .intro {
     justify-content: center;
@@ -73,8 +77,6 @@ p {
 .main-content {
     align-items: center;
     padding-top: 2.5em;
-    padding-left: 2em;
-    padding-right: 2em;
 }
 
 .img-main {
@@ -90,3 +92,35 @@ p {
 /* =================
     Media queries
    ================= */
+
+@media (min-width: 576px) {
+    body {
+        display: flex;
+    }
+
+    h1 {
+        font-size: 5vw;
+    }
+
+    h2 {
+        font-size: 2.625rem;
+    }
+
+    .beta-text {
+        font-size: 1.25rem;
+    }
+
+    .intro,
+    .main-content {
+        width: 50%;
+    }
+
+    .intro {
+        min-height: 100vh;
+    }
+
+    .main-content {
+        justify-content: center;
+        padding-top: 0;
+    }
+}
